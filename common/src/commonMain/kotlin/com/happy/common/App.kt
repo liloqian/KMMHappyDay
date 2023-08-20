@@ -1,21 +1,24 @@
 package com.happy.common
 
-import androidx.compose.material.Text
-import androidx.compose.material.Button
+import androidx.compose.foundation.layout.Box
+import androidx.compose.foundation.layout.fillMaxHeight
+import androidx.compose.foundation.layout.fillMaxWidth
 import androidx.compose.runtime.Composable
-import androidx.compose.runtime.getValue
-import androidx.compose.runtime.mutableStateOf
-import androidx.compose.runtime.remember
-import androidx.compose.runtime.setValue
+import androidx.compose.ui.Alignment
+import androidx.compose.ui.Modifier
+import com.happy.common.repo.IWallPaperRepo
+import com.happy.common.repo.WallPaperRepo
+import com.happy.common.ui.wallPaperImg
 
 @Composable
-fun App() {
-    var text by remember { mutableStateOf("Hello, World!") }
-    val platformName = getPlatformName()
-
-    Button(onClick = {
-        text = "Hello, ${platformName}"
-    }) {
-        Text(text)
+fun app(
+    repo: IWallPaperRepo = WallPaperRepo().also {
+        it.observerWallPaperCategories()
+    }
+) {
+    Box(
+        modifier = Modifier.fillMaxHeight().fillMaxWidth(), contentAlignment = Alignment.BottomCenter
+    ) {
+        wallPaperImg(repo.wallPaperListState)
     }
 }

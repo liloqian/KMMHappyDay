@@ -1,5 +1,3 @@
-import org.jetbrains.compose.compose
-
 plugins {
     kotlin("multiplatform")
     id("org.jetbrains.compose")
@@ -20,6 +18,11 @@ kotlin {
                 api(compose.runtime)
                 api(compose.foundation)
                 api(compose.material)
+                api("io.ktor:ktor-client-core:2.3.3")
+                api("io.ktor:ktor-client-cio:2.3.3")
+                api("io.ktor:ktor-client-content-negotiation:2.3.3")
+//                api("io.ktor:ktor-serialization-kotlinx-json:2.3.3")
+                api("io.ktor:ktor-serialization-gson:2.3.3")
             }
         }
         val commonTest by getting {
@@ -31,6 +34,7 @@ kotlin {
             dependencies {
                 api("androidx.appcompat:appcompat:1.5.1")
                 api("androidx.core:core-ktx:1.9.0")
+                api("com.parse.bolts:bolts-tasks:1.4.0")
             }
         }
         val androidTest by getting {
