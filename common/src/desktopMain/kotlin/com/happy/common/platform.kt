@@ -31,6 +31,7 @@ actual fun loadNetworkImage(link: String, bitmapState: MutableState<BitmapMayNul
         val byteArray = stream.toByteArray()
         bitmapState.value = BitmapMayNull.Bitmap(Image.makeFromEncoded(byteArray).toComposeImageBitmap() )
     } catch (e: Exception) {
+        println("load error ${e.stackTrace}")
         // error
     }
 }

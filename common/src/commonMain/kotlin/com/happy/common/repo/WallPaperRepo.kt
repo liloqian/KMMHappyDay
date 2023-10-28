@@ -52,7 +52,7 @@ class WallPaperRepo : IWallPaperRepo {
     @Composable
     override fun observerWallPaperCategories() {
         LaunchedEffect(scopeIo) {
-            val wallpaperCategoriesStr: String = client.get("http://127.0.0.1:8080/wrapper").body()
+            val wallpaperCategoriesStr: String = client.get("http://192.168.1.18:8888/wrapper").body()
             val collectionType = object : TypeToken<List<WallpaperCategory?>?>() {}.type
             val data: List<WallpaperCategory> = gson.fromJson(wallpaperCategoriesStr, collectionType)
             wallpaperCategories.value = WallpaperCategories(data)
